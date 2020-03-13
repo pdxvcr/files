@@ -1,0 +1,60 @@
+#OPEN THE FILE
+fhand = open('testdoc.txt')
+print(fhand)
+b = 0
+for i in fhand:
+    b = b + 1
+print('Number of lines in the opened file: ', b)
+
+#HOW TO COUNT AMOUNT OF CHARACTERS IN FILE
+fhand = open('testdoc.txt')
+inp = fhand.read() #here method read() reads the whole file as one string including new line character!
+print('Amount of symbols: ', len(inp))
+print(inp[:25])
+
+#HOW TO SEARCH THROUGH THE FILE
+fhand = open('testdoc.txt')
+a = 0
+for line in fhand:
+    line = line.rstrip()
+    if line.startswith('master'):
+        print(line)
+        a=a+1
+print('total found: ', a )
+
+#TEXT EDITOR SEARCH SIMULATOR
+fhand = open('testdoc.txt')
+for line in fhand:
+    line = line.rstrip()
+    if line.find('@gmail.com') == -1:
+        continue
+    print(line)
+
+#HOW TO OPEN THE FILE WITH CHOSEN NAME
+filename = input('Enter the filename: ')
+fhand = open(filename)
+a=0
+for line in fhand:
+    if line.startswith('master'):
+        a = a+1
+print('There are ', a, 'lines in ', filename)
+
+#HOW TO DEAL WITH OPEN FILE MISTAKES
+filename = input('Enter the file name: ')
+try:
+    fhand = open(filename)
+except:
+    print('No such a file or directory:', filename)
+    exit()
+a=0
+for line in fhand:
+    if line.startswith('master'):
+        a = a + 1
+print('There is ', a, 'lines starting with master in ', filename)
+
+#HOW TO WRITE FILES
+filetest = open('testdoc.txt', 'w')
+print(filetest)
+line1='written line\n'
+filetest.write(line1)
+test.close()
